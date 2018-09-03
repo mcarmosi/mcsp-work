@@ -1,1 +1,5 @@
-theme: jekyll-theme-slate
+theme: minima
+
+header_pages:
+  - papers.md
+  - problems.md

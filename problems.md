@@ -1,4 +1,6 @@
-## Open Problems
+---
+title: Open Problems
+---
 
 Currently, these problems are just sorted by the order in which they were emailed to me. As we accumulate more problems, I will organize them by topic instead.
 
