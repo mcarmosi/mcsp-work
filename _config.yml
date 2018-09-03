@@ -1,5 +1,14 @@
 theme: minima
 
 header_pages:
+  - index.md
   - papers.md
   - problems.md
+
+github_username: mcarmosi
+
+author: maintained by Marco Carmosino
+
+description: Exploring MCSP @ Simons
+
+title: MCSP Working Group
