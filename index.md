@@ -35,3 +35,17 @@ You can contribute directly to this webpage, on [github](https://github.com/mcar
 
 
 If you know of more events that may be of interest to lower bounds participants in general, let me know.
+
+
+## Mailing List
+
+<form action="https://lists.simons.berkeley.edu/sympa" method="post">
+  <fieldset>
+    <label for="email">Your e-mail address</label>
+    <input type="text" name="email" size="30"><br>
+    <input type="hidden" name="list" value="mcsp-work">
+    <input type="hidden" name="action" value="subrequest">
+    <input type="hidden" name="via_subrequest" value="1">
+    <input type="submit" name="action_subrequest" value="submit">
+  </fieldset>
+</form>
