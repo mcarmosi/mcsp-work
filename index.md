@@ -4,9 +4,9 @@ title: Logistics
 
 ## Initial Meeting
 
-Thursday, September 6, at 2:30PM, in room 146.
+Thursday, September 6, at 3:45PM, in room 146.
 
-Then, every Thursday thereafter at the same time and place, unless
+Then, every Thursday thereafter at 2:30PM, unless
 there is a Lower Bounds workshop.
 
 
