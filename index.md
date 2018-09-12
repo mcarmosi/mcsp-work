@@ -2,12 +2,11 @@
 title: Logistics
 ---
 
-## Initial Meeting
+## Next Meeting
 
-Thursday, September 6, at 3:45PM, in room 146.
+**Thursday**, September 20, at **2:30PM,** in room 116.
 
-Then, every Thursday thereafter at 2:30PM, unless
-there is a Lower Bounds workshop.
+(weekly on Thursday at 2:30PM unless Lower Bounds has a workshop)
 
 
 ## Contributing
