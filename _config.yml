@@ -2,6 +2,7 @@ theme: minima
 
 header_pages:
   - index.md
+  - rlist.md
   - papers.md
   - problems.md
 
