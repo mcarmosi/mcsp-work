@@ -2,7 +2,7 @@
 title: Reading List
 ---
 
-1. September 20:: [Circuit minimization problem][KC00],
+1. September 20: [Circuit minimization problem][KC00],
    presented by Valentine Kabanets
 2. September 27: [Learning Algorithms from Natural Proofs][CIKK16],
    presented by Marco Carmosino
@@ -24,3 +24,14 @@ title: Reading List
 [AGvMMM18]: http://pages.cs.wisc.edu/~amorgan/publications/isomktp.html
 
 <!-- slot in igor somewhere -- mag mcsp/mktp -->
+
+<!-- mrnial arithmetic natural proofs? -->
+
+<!-- toni's paper on NP-hardness of pac-learning random halfpspaces -->
+
+<!-- state of the art in upper bounds on real mcsp? NOT natural proofs -->
+
+<!-- succinct mcsp? work by umans? approximtion versions in pi2? -->
+
+<!-- On the Average-Case Complexity of MCSP and Its Variants? maybe
+covered by hardness magnification -->
