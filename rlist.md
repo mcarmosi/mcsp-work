@@ -14,6 +14,7 @@ title: Reading List
 6. TBD
 7. TBD
 8. TBD
+
 9. TBD
 10. TBD
 
@@ -25,7 +26,7 @@ title: Reading List
 
 <!-- slot in igor somewhere -- mag mcsp/mktp -->
 
-<!-- mrnial arithmetic natural proofs? -->
+<!-- mrnial arithmetic natural proofs? (idea arithmetic mcsp -->
 
 <!-- toni's paper on NP-hardness of pac-learning random halfpspaces -->
 
@@ -35,3 +36,5 @@ title: Reading List
 
 <!-- On the Average-Case Complexity of MCSP and Its Variants? maybe
 covered by hardness magnification -->
+
+<!-- shuichi/eric: New Insights on the (Non-)Hardness of Circuit Minimization and Related Problems. -->
