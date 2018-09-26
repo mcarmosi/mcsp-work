@@ -10,14 +10,17 @@ title: Reading List
    OR-AND-MOD Circuits][HOS18], presented by Shuichi Hirahara
 4. October 11: [On the (Non) NP-Hardness of Computing Circuit
    Complexity][MW17], presented by Cody Murray
-5. October 25: [Minimum Circuit Size, Graph Isomorphism, and Related Problems][AGvMMM18], presented by Andrew Morgan
-6. TBD
-7. TBD
-8. TBD
+5. October 25: [Minimum Circuit Size, Graph Isomorphism, and Related
+   Problems][AGvMMM18], presented by Andrew Morgan
+6. November 1: [Hardness magnification near state-of-the-art lower
+   bounds][OPS18], presented by Igor Carboni Oliveira
+7. November 8: TBD
+8. November 15: TBD
+9. November 29: TBD
+10. December 13: TBD
 
-9. TBD
-10. TBD
 
+[OPS18]: https://eccc.weizmann.ac.il/report/2018/158/
 [KC00]: https://dl.acm.org/citation.cfm?doid=335305.335314
 [CIKK16]: http://drops.dagstuhl.de/opus/volltexte/2016/5855/
 [HOS18]: http://drops.dagstuhl.de/opus/volltexte/2018/8883/
