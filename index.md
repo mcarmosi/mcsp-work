@@ -4,7 +4,9 @@ title: Logistics
 
 ## Next Meeting
 
-**Thursday**, September 20, at **2:30PM,** in room 116.
+**Thursday**, September 27, at **2:30PM,** in room 116. Marco
+Carmosino will present [Learning Algorithms from Natural
+Proofs][CIKK16].
 
 (weekly on Thursday at 2:30PM unless Lower Bounds has a workshop)
 
@@ -33,7 +35,7 @@ You can contribute directly to this webpage, on [github](https://github.com/mcar
 <!--   * 10:30AM ... 12:00PM --- Seminar "Overflow" -->
 
 
-If you know of more events that may be of interest to lower bounds participants in general, let me know.
+<!-- If you know of more events that may be of interest to lower bounds participants in general, let me know. -->
 
 
 ## Mailing List
@@ -48,3 +50,6 @@ If you know of more events that may be of interest to lower bounds participants 
     <input type="submit" name="action_subrequest" value="submit">
   </fieldset>
 </form>
+
+
+[CIKK16]: http://drops.dagstuhl.de/opus/volltexte/2016/5855/
