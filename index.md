@@ -4,7 +4,7 @@ title: Logistics
 
 ## Next Meeting
 
-**Thursday**, Octobere 4, at **2:30PM,** in room 116. Eric Allender
+**Thursday**, October 4, at **2:30PM,** in room 116. Eric Allender
    will present [Power from Random Strings][ABKvMR06].
 
 (weekly on Thursday at 2:30PM unless Lower Bounds has a workshop)
