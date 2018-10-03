@@ -4,9 +4,8 @@ title: Logistics
 
 ## Next Meeting
 
-**Thursday**, September 27, at **2:30PM,** in room 116. Marco
-Carmosino will present [Learning Algorithms from Natural
-Proofs][CIKK16].
+**Thursday**, Octobere 4, at **2:30PM,** in room 116. Eric Allender
+   will present [Power from Random Strings][ABKvMR06].
 
 (weekly on Thursday at 2:30PM unless Lower Bounds has a workshop)
 
@@ -53,3 +52,4 @@ You can contribute directly to this webpage, on [github](https://github.com/mcar
 
 
 [CIKK16]: http://drops.dagstuhl.de/opus/volltexte/2016/5855/
+[ABKvMR06]: https://epubs.siam.org/doi/10.1137/050628994

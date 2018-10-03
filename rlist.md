@@ -6,8 +6,8 @@ title: Reading List
    presented by Valentine Kabanets
 2. September 27: [Learning Algorithms from Natural Proofs][CIKK16],
    presented by Marco Carmosino
-3. October 4: [NP-hardness of Minimum Circuit Size Problem for
-   OR-AND-MOD Circuits][HOS18], presented by Shuichi Hirahara
+3. October 4: [Power from Random Strings][ABKvMR06], presented by Eric
+   Allender
 4. October 11: [On the (Non) NP-Hardness of Computing Circuit
    Complexity][MW17], presented by Cody Murray
 5. October 25: [Minimum Circuit Size, Graph Isomorphism, and Related
@@ -19,7 +19,10 @@ title: Reading List
 9. November 29: TBD
 10. December 13: TBD
 
-
+<!-- [NP-hardness of Minimum Circuit Size Problem for
+   OR-AND-MOD Circuits][HOS18], presented by Shuichi Hirahara -->
+   
+[ABKvMR06]: https://epubs.siam.org/doi/10.1137/050628994
 [OPS18]: https://eccc.weizmann.ac.il/report/2018/158/
 [KC00]: https://dl.acm.org/citation.cfm?doid=335305.335314
 [CIKK16]: http://drops.dagstuhl.de/opus/volltexte/2016/5855/
