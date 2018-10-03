@@ -10,11 +10,10 @@ title: Reading List
    Allender
 4. October 11: [On the (Non) NP-Hardness of Computing Circuit
    Complexity][MW17], presented by Cody Murray
-5. October 25: [Minimum Circuit Size, Graph Isomorphism, and Related
-   Problems][AGvMMM18], presented by Andrew Morgan
-6. November 1: [Hardness magnification near state-of-the-art lower
-   bounds][OPS18], presented by Igor Carboni Oliveira
-7. November 8: TBD
+5. October 25: [NP-hardness of Minimum Circuit Size Problem for
+   OR-AND-MOD Circuits][HOS18], presented by Shuichi Hirahara
+6. November 1: [Minimum Circuit Size, Graph Isomorphism, and Related Problems][AGvMMM18], presented by Andrew Morgan
+7. November 8: [Hardness magnification near state-of-the-art lower bounds][OPS18], presented by Igor Carboni Oliveira
 8. November 15: TBD
 9. November 29: TBD
 10. December 13: TBD
