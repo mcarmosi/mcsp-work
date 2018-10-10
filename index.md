@@ -4,8 +4,9 @@ title: Logistics
 
 ## Next Meeting
 
-**Thursday**, October 4, at **2:30PM,** in room 116. Eric Allender
-   will present [Power from Random Strings][ABKvMR06].
+**Thursday**, October 11, at **2:30PM,** in room 116. Cody Murray will
+   present [On the (Non) NP-Hardness of Computing Circuit
+   Complexity][MW17].
 
 (weekly on Thursday at 2:30PM unless Lower Bounds has a workshop)
 
@@ -53,3 +54,4 @@ You can contribute directly to this webpage, on [github](https://github.com/mcar
 
 [CIKK16]: http://drops.dagstuhl.de/opus/volltexte/2016/5855/
 [ABKvMR06]: https://epubs.siam.org/doi/10.1137/050628994
+[MW17]: http://www.theoryofcomputing.org/articles/v013a004/
