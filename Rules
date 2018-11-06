@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+compile '/index.md' do
+    filter :pandoc, args: [
+           { from: "markdown+fenced_divs",
+             to: :html,
+             bibliography: "Lit.bib",
+             csl: "apa.csl",
+             metadata: "link-citations=true"
+           },
+           'mathjax',
+           :table_of_contents,
+         ]
+  layout '/default.*'
+  write '/index.html'
+end
+
+compile '/**/*.md' do
+  filter :pandoc, args: [
+           { from: "markdown+fenced_divs+native_divs",
+             to: :html,
+             bibliography: "Lit.bib",
+             csl: "apa.csl",
+             metadata: "link-citations=true"
+           },
+           'mathjax',
+           :table_of_contents,
+         ]
+  layout '/default.*'
+  write item.identifier.without_ext + '/index.html'
+end
+
+compile '/**/*' do
+  write item.identifier.to_s
+end
+
+layout '/**/*', :erb

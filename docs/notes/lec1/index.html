@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MCSP Work - Lecture 1 - Circuit Minimization Problem</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.10.2">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  </head>
+  <body>
+    <div id="main">
+      <h1 id="lecture-1-circuit-minimization-problem">Lecture 1: Circuit Minimization Problem</h1>
+<h2 id="introduction">Introduction</h2>
+<p>These notes abstract <span class="citation" data-cites="DBLP:conf/stoc/KabanetsC00">(Kabanets &amp; Cai, <a href="#ref-DBLP:conf/stoc/KabanetsC00">2000</a>)</span>, which sparked Western interest in the Minimum Circuit Size Problem (MCSP). This paper contributed a clear definition of MCSP, and formal evidence that resolving the complexity of MCSP will be <em>difficult.</em> Kabanets and Cai gave two kinds of evidence:</p>
+<ol type="1">
+<li>MCSP is Easy <span class="math inline">\(\implies\)</span> Circuit Lower Bounds &amp; Derandomization</li>
+<li>A “simple” proof that MCSP is NP-hard <span class="math inline">\(\implies\)</span> Circuit Lower Bounds</li>
+</ol>
+<p>Roughly: “settling the complexity of MCSP is as hard as proving circuit lower bounds.” Though theorists generally expect that circuit lower bounds are <em>true</em>, there is formal evidence that they will be hard to prove <span class="citation" data-cites="DBLP:journals/jcss/RazborovR97">(Razborov &amp; Rudich, <a href="#ref-DBLP:journals/jcss/RazborovR97">1997</a>)</span>. Thus, while we are free to conjecture that MCSP is NP-complete, we should expect that this will be difficult to prove.</p>
+<p>Here we give: the basic definitions, a couple of results from each type of implication, and an updated discussion of the open problems from <span class="citation" data-cites="DBLP:conf/stoc/KabanetsC00">(Kabanets &amp; Cai, <a href="#ref-DBLP:conf/stoc/KabanetsC00">2000</a>)</span>.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Valentine mentioned that he was interested in MCSP because of the problem’s connection to pseudo-randomness. At the time, breakthrough hardness-to-randomness tradeoffs had just been completed <span class="citation" data-cites="DBLP:conf/stoc/ImpagliazzoW97">(Impagliazzo &amp; Wigderson, <a href="#ref-DBLP:conf/stoc/ImpagliazzoW97">1997</a>)</span>. The utility of access to hard truth tables was clear. Lacking circuit lower bounds, one motivation for studying MCSP is “can we at least recognize a hard truth-table when we see it?”.</p>
+<p>TODO: ask valentine for more commentary and stories.</p>
+<h2 id="definitions-preliminaries">Definitions &amp; Preliminaries</h2>
+<p>We begin by formally defining the problem.</p>
+<div class="definition" title="Minimum Circuit Size Problem (MCSP)">
+<dl>
+<dt><strong><em>Input:</em></strong></dt>
+<dd>A Boolean function <span class="math inline">\(f_n : \{0,1\}^n \to \{0,1\}\)</span> given as a truth table (length <span class="math inline">\(2^n\)</span>) and a number <span class="math inline">\(s_n \in \mathbb{N}\)</span> (in binary).
+</dd>
+<dt><strong><em>Output:</em></strong></dt>
+<dd>Is <span class="math inline">\(f_n\)</span> computable by a Boolean circuit of size at most <span class="math inline">\(s_n\)</span>?
+</dd>
+<dt><strong><em>Formally:</em></strong></dt>
+<dd><span class="math inline">\(MCSP = \{ \langle f, s \rangle : CC(f) \leq s \}\)</span>
+</dd>
+</dl>
+</div>
+<p>MCSP is clearly in NP. The maximum circuit size for any function is <span class="math inline">\(O(2^n/n)\)</span>, and we have <span class="math inline">\(2^n\)</span> bits of input. Therefore, an NP computation has time to guess and check every possible circuit of size less than or equal to <span class="math inline">\(s\)</span>.</p>
+<p>MCSP is linked pseudorandomness. But observe that it operates on the <em>truth tables</em> of functions. So, if we want MCSP to interact with a pseudorandom object, that object must be “local” in the following sense:</p>
+<div class="definition" title="Local Pseudorandom Functions">
+<p>A function <span class="math inline">\(f\)</span> is a local pseudorandom function against <span class="math inline">\(\Lambda\)</span> if:</p>
+<p><span class="math display">\[ |\Pr_{g \sim G}[C^g = 1] - \Pr_{f \sim F_n}[C^f = 1]| &lt; \epsilon\]</span></p>
+<p>and the image of <span class="math inline">\(g\)</span> is locally computable in <span class="math inline">\(\Lambda\)</span>.</p>
+</div>
+<h2 id="what-if-mcsp-is-easy">What if MCSP is Easy?</h2>
+<p>If there is an efficient algorithm for MCSP, dramatic consequences for both lower bounds and algorithms follow. Therefore, it should be very difficult to give efficient algorithms for MCSP. For the duration of this section, we assume:</p>
+<div class="assumption" title="MCSP is Efficient">
+<p>MCSP is in PTIME</p>
+</div>
+<p>Some of the results in this section should be provable under milder assumptions, like “MCSP is in SUBEXP.”</p>
+<h3 id="no-pseudorandomness">No Pseudorandomness</h3>
+<p>This is really about natural proofs; thus I’m not sure if it should be included in these notes. Essentially we observe that MCSP is a <em>better</em> Natural Property than any normal Natural Property, so we can invoke anything in <span class="citation" data-cites="DBLP:journals/jcss/RazborovR97">(Razborov &amp; Rudich, <a href="#ref-DBLP:journals/jcss/RazborovR97">1997</a>)</span> or <span class="citation" data-cites="DBLP:conf/coco/CarmosinoIKK16">(Carmosino, Impagliazzo, Kabanets, &amp; Kolokolova, <a href="#ref-DBLP:conf/coco/CarmosinoIKK16">2016</a>)</span> up to and including:</p>
+<ul>
+<li>No PRFGs in P/poly</li>
+<li>Discrete Log is easy</li>
+<li>Everything in P/poly can be learned</li>
+<li>etc…</li>
+</ul>
+<p>Actually, perhaps it is <em>very good</em> to include this section, because then we can give a little roundup of the many applications of the generic “Break a PRFG” idea that show up in this literature, and note that this has been a trend in Western MCSP-studies since the paper that started it all.</p>
+<h3 id="maximum-complexity-functions-in-enp">Maximum-Complexity Functions in <span class="math inline">\(E^{NP}\)</span></h3>
+<p>At each input length, there is some maximum circuit complexity. This is a well-defined function for any number of bits <span class="math inline">\(n\)</span>.</p>
+<div class="definition" title="Maximum Circuit Complexity">
+<p><span class="math display">\[MH(n) = \max_{f \in \mathcal{F}_n} CC(f)\]</span></p>
+</div>
+<p>For each <span class="math inline">\(n\)</span>, <span class="math inline">\(MH(n)\)</span> is the maximum number of gates <em>required</em> to compute some function on <span class="math inline">\(n\)</span> bits. There could be more than one function on <span class="math inline">\(n\)</span> bits that requires <span class="math inline">\(MH(n)\)</span> gates to compute. To actually find this number, we’ll define a conveniently padded language that corresponds to determining the existence of <span class="math inline">\(s\)</span>-hardness at a particular input length.</p>
+<div class="definition" title="s-Hardness at length n">
+<p>The relation <span class="math inline">\(H(n,s)\)</span> is true if there <em>exists</em> a Boolean function on <span class="math inline">\(n\)</span> bits that requires <span class="math inline">\(s\)</span> gates to compute. We define the following padded decision problem corresponding to this relation. <span class="math display">\[H(n,s) = \{ \langle 1^{2^n}, 1^s \rangle : \exists f \in
+\mathcal{F}_n. \langle f,s \rangle \in MCSP \land \langle f, (s-1) \rangle
+\not\in MCSP \}\]</span></p>
+</div>
+<p>To actually find a particular hard function, we’ll define another conveniently padded language that asks if the input string can be extended to produce a truth table on <span class="math inline">\(n\)</span> bits that requires <span class="math inline">\(s\)</span> gates to compute.</p>
+<div class="definition" title="s-Hard Prefix at length n">
+<p>The relation <span class="math inline">\(HP(x,n,s)\)</span> is true if <span class="math inline">\(x\)</span> is the <em>prefix</em> of a Boolean function on <span class="math inline">\(n\)</span> bits (considered as a truth table) that requires <span class="math inline">\(s\)</span> gates to compute. We define the following padded decision problem corresponding to this relation. <span class="math display">\[HP(n,s) = \{ \langle x, 1^{2^n}, 1^s \rangle : \exists y \in
+\{0,1\}^{2^n - |x|}. \langle xy,s \rangle \in MCSP \\ \land \\ \langle xy, (s-1) \rangle
+\not\in MCSP \}\]</span></p>
+</div>
+<div class="theorem" title="MCSP is Easy Implies Uniform Max-Complexity Functions">
+<p>If MCSP is in P, then <span class="math inline">\(E^{NP}\)</span> contains a family of Boolean functions of maximum circuit complexity.</p>
+</div>
+<h3 id="derandomization-into-zero-error">Derandomization into Zero-Error</h3>
+<h3 id="conclusions-discussion">Conclusions &amp; Discussion</h3>
+<h2 id="what-if-mcsp-is-np-complete">What if MCSP is NP-Complete?</h2>
+<h3 id="high-complexity-functions-in-e">High-Complexity Functions in E</h3>
+<h3 id="derandomization-into-subexp-time">Derandomization into Subexp-Time</h3>
+<h3 id="conclusions-discussion-1">Conclusions &amp; Discussion</h3>
+<h2 id="open-problems">Open Problems</h2>
+<h2 id="references" class="unnumbered">References</h2>
+<div id="refs" class="references">
+<div id="ref-DBLP:conf/coco/CarmosinoIKK16">
+<p>Carmosino, M. L., Impagliazzo, R., Kabanets, V., &amp; Kolokolova, A. (2016). Learning algorithms from natural proofs. In R. Raz (Ed.), <em>31st conference on computational complexity, CCC 2016, may 29 to june 1, 2016, tokyo, japan</em> (Vol. 50, pp. 10:1–10:24). Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik. <a href="https://doi.org/10.4230/LIPIcs.CCC.2016.10" class="uri">https://doi.org/10.4230/LIPIcs.CCC.2016.10</a></p>
+</div>
+<div id="ref-DBLP:conf/stoc/ImpagliazzoW97">
+<p>Impagliazzo, R., &amp; Wigderson, A. (1997). <em>P = bpp</em> if <em>e</em> requires exponential circuits: Derandomizing the XOR lemma. In F. T. Leighton &amp; P. W. Shor (Eds.), <em>Proceedings of the twenty-ninth annual ACM symposium on the theory of computing, el paso, texas, usa, may 4-6, 1997</em> (pp. 220–229). ACM. <a href="https://doi.org/10.1145/258533.258590" class="uri">https://doi.org/10.1145/258533.258590</a></p>
+</div>
+<div id="ref-DBLP:conf/stoc/KabanetsC00">
+<p>Kabanets, V., &amp; Cai, J. (2000). Circuit minimization problem. In F. F. Yao &amp; E. M. Luks (Eds.), <em>Proceedings of the thirty-second annual ACM symposium on theory of computing, may 21-23, 2000, portland, or, USA</em> (pp. 73–79). ACM. <a href="https://doi.org/10.1145/335305.335314" class="uri">https://doi.org/10.1145/335305.335314</a></p>
+</div>
+<div id="ref-DBLP:journals/jcss/RazborovR97">
+<p>Razborov, A. A., &amp; Rudich, S. (1997). Natural proofs. <em>J. Comput. Syst. Sci.</em>, <em>55</em>(1), 24–35. <a href="https://doi.org/10.1006/jcss.1997.1494" class="uri">https://doi.org/10.1006/jcss.1997.1494</a></p>
+</div>
+</div>
+
+    </div>
+    <div id="sidebar">
+      <h2>MCSP @ Simons</h2>
+      <ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/rlist/">Reading List</a></li>
+	<li><a href="/papers/">Papers</a></li>
+	<li><a href="/problems/">Open Problems</a></li>
+	<li><a href="/notes/">Notes</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

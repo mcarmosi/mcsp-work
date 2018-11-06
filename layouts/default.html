@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MCSP Work - <%= @item[:title] %></title>
+    <link rel="stylesheet" href="/stylesheet.css">
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+  </head>
+  <body>
+    <div id="main">
+      <%= yield %>
+    </div>
+    <div id="sidebar">
+      <h2>MCSP @ Simons</h2>
+      <ul>
+	<li><%= link_to('Home', '/') %></li>
+	<li><%= link_to('Reading List', '/rlist/') %></li>
+	<li><%= link_to('Papers', '/papers/') %></li>
+	<li><%= link_to('Open Problems', '/problems/') %></li>
+	<li><%= link_to('Notes', '/notes/') %></li>
+      </ul>
+    </div>
+  </body>
+</html>
