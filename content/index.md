@@ -7,23 +7,18 @@ title: Home
 
 ## Next Meeting
 
-**Thursday**, November 1, at **2:30PM,** in room 116: Andrew Morgan
-will present [Minimum Circuit Size, Graph Isomorphism, and Related
-Problems][AGvMMM18].
+**Thursday**, November 8, at **2:30PM,** in room 116: Igor Carboni
+Oliveira will present [Hardness magnification near state-of-the-art
+lower bounds][OPS18].
 
 (weekly on Thursday at 2:30PM unless Lower Bounds has a workshop)
 
-
 ## Contributing
 
-<!-- You can contribute directly to this webpage, on -->
-<!-- [github](https://github.com/mcarmosi/mcsp-work)! -->
-
-Please hold off on contributions for the time being --- I am moving
-the site to a new backend (pandoc/nanoc) that supports BibTeX,
-equations, theorem environments, and complexity class and problem
-macros *directly.* This will be done soon, and then writing about MCSP
-here will be much easier.
+You can contribute directly to this webpage, on
+[github](https://github.com/mcarmosi/mcsp-work)! We are using
+[pandoc](http://pandoc.org), which supports BibTeX, equations, and
+theorem environments directly.
 
 ## Mailing List
 \ 
@@ -46,3 +41,4 @@ Sign up below:
 [MW17]: http://www.theoryofcomputing.org/articles/v013a004/
 [HOS18]: http://drops.dagstuhl.de/opus/volltexte/2018/8883/
 [AGvMMM18]: http://pages.cs.wisc.edu/~amorgan/publications/isomktp.html
+[OPS18]: https://eccc.weizmann.ac.il/report/2018/158/
