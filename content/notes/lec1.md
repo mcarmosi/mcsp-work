@@ -2,6 +2,12 @@
 title: Lecture 1 - Circuit Minimization Problem
 ---
 
+$$
+\newcommand{E}{\mathsf{E}}
+\newcommand{NP}{\mathsf{NP}}
+\def\bold#1{{\bf #1}}
+$$
+
 # Lecture 1: Circuit Minimization Problem
 
 ## Introduction
@@ -14,12 +20,12 @@ gave two kinds of evidence:
 1. MCSP is Easy $\implies$ Circuit Lower Bounds \& Derandomization
 2. A "simple" proof that MCSP is NP-hard $\implies$ Circuit Lower Bounds
 
-Roughly: "settling the complexity of MCSP is as hard as proving
-circuit lower bounds." Though theorists generally expect that circuit
+Very roughly: "understanding the complexity of MCSP is as hard as
+proving circuit lower bounds." Though we generally expect that circuit
 lower bounds are *true*, there is formal evidence that they will be
 hard to prove [@DBLP:journals/jcss/RazborovR97]. Thus, while we are
-free to conjecture that MCSP is NP-complete, we should expect that
-this will be difficult to prove.
+free to conjecture that MCSP is NP-complete, we expect this will be
+difficult to prove.
 
 Here we give: the basic definitions, a couple of results from each
 type of implication, and an updated discussion of the open problems
@@ -101,7 +107,7 @@ generic "Break a PRFG" idea that show up in this literature, and note
 that this has been a trend in Western MCSP-studies since the paper
 that started it all.
 
-### Maximum-Complexity Functions in $E^{NP}$
+### Maximum-Complexity Functions in $\E^{NP}$
 At each input length, there is some maximum circuit complexity. This
 is a well-defined function for any number of bits $n$.
 
@@ -135,7 +141,7 @@ The relation $HP(x,n,s)$ is true if $x$ is the *prefix* of a Boolean
 function on $n$ bits (considered as a truth table) that requires $s$
 gates to compute. We define the following padded decision problem
 corresponding to this relation.
-$$HP(n,s) = \{ \langle x, 1^{2^n}, 1^s \rangle : \exists y \in
+$$HP(x,n,s) = \{ \langle x, 1^{2^n}, 1^s \rangle : \exists y \in
 \{0,1\}^{2^n - |x|}. \langle xy,s \rangle \in MCSP \\ \land \\ \langle xy, (s-1) \rangle
 \not\in MCSP \}$$
 ::::
@@ -143,6 +149,37 @@ $$HP(n,s) = \{ \langle x, 1^{2^n}, 1^s \rangle : \exists y \in
 :::: {.theorem title="MCSP is Easy Implies Uniform Max-Complexity Functions"}
 If MCSP is in P, then $E^{NP}$ contains a family of Boolean functions of
 maximum circuit complexity.
+::::
+
+:::: {.proof}
+
+This proof uses two steps. First, figure out what the maximum possible
+circuit complexity on $n$ bits actually is. Second, use a standard
+"extend the solution" self-reduction to search for the
+lexicographically-first function of maximal circuit complexity on $n$ bits.
+
+It is not important to obtain the lex-first maximially hard function;
+it is just important to identify a *unique* such function to ensure
+that our machine decides a well-defined language. Any other way to
+ensure uniqueness would also work. On input $x$, run the following
+algorithm:
+
+1. For $s$ from $2^n$ to $0$:
+   a. if $H(n,s)$ then $s^\star \gets s$ and break
+2. Let $T$ be an empty binary string
+3. Repeat until $|T| = 2^n$:
+   * if $HP(T0,n,s^\star,)$ then: $T \gets T0$
+   * Else, $T \gets T1$
+
+The point is that, if MCSP is in P, HP and H are NP languages. This is
+because we need both MCSP and coMCSP to define these languages. If
+MCSP is in P, coMCSP is also in P because P is deterministic and thus
+closed under complement. So the inner relation of both these languages
+is in PTIME.
+
+Finally, the time required to produce the necessary padding is clearly
+in E. 
+
 ::::
 
 ### Derandomization into Zero-Error
