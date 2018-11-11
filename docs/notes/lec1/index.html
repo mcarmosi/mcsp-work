@@ -16,17 +16,22 @@
       <p><span class="math display">\[
 \newcommand{E}{\mathsf{E}}
 \newcommand{NP}{\mathsf{NP}}
+\newcommand{P}{\mathsf{P}}
+\newcommand{PH}{\mathsf{PH}}
+\newcommand{BPP}{\mathsf{BPP}}
+\newcommand{ZPP}{\mathsf{ZPP}}
+\newcommand{mcsp}{\mathtt{MCSP}}
 \def\bold#1{{\bf #1}}
 \]</span></p>
 <h1 id="lecture-1-circuit-minimization-problem">Lecture 1: Circuit Minimization Problem</h1>
 <h2 id="introduction">Introduction</h2>
-<p>These notes abstract <span class="citation" data-cites="DBLP:conf/stoc/KabanetsC00">(Kabanets &amp; Cai, <a href="#ref-DBLP:conf/stoc/KabanetsC00">2000</a>)</span>, which sparked Western interest in the Minimum Circuit Size Problem (MCSP). This paper contributed a clear definition of MCSP, and formal evidence that resolving the complexity of MCSP will be <em>difficult.</em> Kabanets and Cai gave two kinds of evidence:</p>
+<p>These notes abstract <span class="citation" data-cites="DBLP:conf/stoc/KabanetsC00">(Kabanets &amp; Cai, <a href="#ref-DBLP:conf/stoc/KabanetsC00">2000</a>)</span>, which sparked Western interest in the Minimum Circuit Size Problem (<span class="math inline">\(\mcsp\)</span>). This paper contributed a clear definition of MCSP, and formal evidence that resolving the complexity of MCSP will be <em>difficult.</em> Kabanets and Cai gave two kinds of evidence:</p>
 <ol type="1">
 <li>MCSP is Easy <span class="math inline">\(\implies\)</span> Circuit Lower Bounds &amp; Derandomization</li>
 <li>A “simple” proof that MCSP is NP-hard <span class="math inline">\(\implies\)</span> Circuit Lower Bounds</li>
 </ol>
 <p>Very roughly: “understanding the complexity of MCSP is as hard as proving circuit lower bounds.” Though we generally expect that circuit lower bounds are <em>true</em>, there is formal evidence that they will be hard to prove <span class="citation" data-cites="DBLP:journals/jcss/RazborovR97">(Razborov &amp; Rudich, <a href="#ref-DBLP:journals/jcss/RazborovR97">1997</a>)</span>. Thus, while we are free to conjecture that MCSP is NP-complete, we expect this will be difficult to prove.</p>
-<p>Here we give: the basic definitions, a couple of results from each type of implication, and an updated discussion of the open problems from <span class="citation" data-cites="DBLP:conf/stoc/KabanetsC00">(Kabanets &amp; Cai, <a href="#ref-DBLP:conf/stoc/KabanetsC00">2000</a>)</span>.</p>
+<p>Here we give: the basic definitions, a couple of results demonstrating each type of implication, and an updated discussion of the open problems from <span class="citation" data-cites="DBLP:conf/stoc/KabanetsC00">(Kabanets &amp; Cai, <a href="#ref-DBLP:conf/stoc/KabanetsC00">2000</a>)</span>.</p>
 <h2 id="motivation">Motivation</h2>
 <p>Valentine mentioned that he was interested in MCSP because of the problem’s connection to pseudo-randomness. At the time, breakthrough hardness-to-randomness tradeoffs had just been completed <span class="citation" data-cites="DBLP:conf/stoc/ImpagliazzoW97">(Impagliazzo &amp; Wigderson, <a href="#ref-DBLP:conf/stoc/ImpagliazzoW97">1997</a>)</span>. The utility of access to hard truth tables was clear. Lacking circuit lower bounds, one motivation for studying MCSP is “can we at least recognize a hard truth-table when we see it?”.</p>
 <p>TODO: ask valentine for more commentary and stories.</p>
@@ -52,12 +57,17 @@
 <p><span class="math display">\[ |\Pr_{g \sim G}[C^g = 1] - \Pr_{f \sim F_n}[C^f = 1]| &lt; \epsilon\]</span></p>
 <p>and the image of <span class="math inline">\(g\)</span> is locally computable in <span class="math inline">\(\Lambda\)</span>.</p>
 </div>
+<h3 id="required-background">Required Background</h3>
+<p>You should be familiar with time-based deterministic, nondeterministic, and randomized complexity classes. You should also know the basic definitions of general circuit complexity. This material is covered in chapters 1 - 7 of <span class="citation" data-cites="DBLP:books/daglib/0023084">(Arora &amp; Barak, <a href="#ref-DBLP:books/daglib/0023084">2009</a>)</span>. Most introductory classes about complexity theory will teach these topics during the first half of the course. This note will define all other necessary concepts.</p>
 <h2 id="what-if-mcsp-is-easy">What if MCSP is Easy?</h2>
 <p>If there is an efficient algorithm for MCSP, dramatic consequences for both lower bounds and algorithms follow. Therefore, it should be very difficult to give efficient algorithms for MCSP. For the duration of this section, we assume:</p>
-<div class="assumption" title="MCSP is Efficient">
-<p>MCSP is in PTIME</p>
+<div class="assumption" title="MCSP is Easy">
+<p><span class="math inline">\(\mcsp \in \P\)</span></p>
 </div>
-<p>Some of the results in this section should be provable under milder assumptions, like “MCSP is in SUBEXP.”</p>
+<!-- The interested reader should ask: what is the minimal efficincy
+assumption about MCSP, weaker than $\mcsp \in \P$, that suffices to
+prove some version of each result? When are tradeoffs present, and
+when not? -->
 <h3 id="no-pseudorandomness">No Pseudorandomness</h3>
 <p>This is really about natural proofs; thus I’m not sure if it should be included in these notes. Essentially we observe that MCSP is a <em>better</em> Natural Property than any normal Natural Property, so we can invoke anything in <span class="citation" data-cites="DBLP:journals/jcss/RazborovR97">(Razborov &amp; Rudich, <a href="#ref-DBLP:journals/jcss/RazborovR97">1997</a>)</span> or <span class="citation" data-cites="DBLP:conf/coco/CarmosinoIKK16">(Carmosino, Impagliazzo, Kabanets, &amp; Kolokolova, <a href="#ref-DBLP:conf/coco/CarmosinoIKK16">2016</a>)</span> up to and including:</p>
 <ul>
@@ -67,53 +77,75 @@
 <li>etc…</li>
 </ul>
 <p>Actually, perhaps it is <em>very good</em> to include this section, because then we can give a little roundup of the many applications of the generic “Break a PRFG” idea that show up in this literature, and note that this has been a trend in Western MCSP-studies since the paper that started it all.</p>
-<h3 id="maximum-complexity-functions-in-enp">Maximum-Complexity Functions in <span class="math inline">\(\E^{NP}\)</span></h3>
-<p>At each input length, there is some maximum circuit complexity. This is a well-defined function for any number of bits <span class="math inline">\(n\)</span>.</p>
+<p>This section will just <em>state</em> this type of result without proof, and point to notes on other topics that make these proofs in more detail.</p>
+<h3 id="maximum-complexity-functions-in-enp">Maximum-Complexity Functions in <span class="math inline">\(\E^{\NP}\)</span></h3>
+<p>It seems very difficult to exhibit uniform functions that are hard to compute with general circuits. In this section we show that if MCSP were <em>easy</em>, then we could produce functions that require <em>maximum</em> circuit size in a uniform complexity class.</p>
+<p>At each input length, there is some maximum circuit complexity. This is a well-defined function for any number of bits <span class="math inline">\(n\)</span>, though more than one function might require the maximum circuit complexity at any particular <span class="math inline">\(n\)</span>.</p>
 <div class="definition" title="Maximum Circuit Complexity">
 <p><span class="math display">\[MH(n) = \max_{f \in \mathcal{F}_n} CC(f)\]</span></p>
 </div>
-<p>For each <span class="math inline">\(n\)</span>, <span class="math inline">\(MH(n)\)</span> is the maximum number of gates <em>required</em> to compute some function on <span class="math inline">\(n\)</span> bits. There could be more than one function on <span class="math inline">\(n\)</span> bits that requires <span class="math inline">\(MH(n)\)</span> gates to compute. To actually find this number, we’ll define a conveniently padded language that corresponds to determining the existence of <span class="math inline">\(s\)</span>-hardness at a particular input length.</p>
+<p>For each <span class="math inline">\(n\)</span>, <span class="math inline">\(MH(n)\)</span> is the maximum number of gates <em>required</em> to compute some function on <span class="math inline">\(n\)</span> bits. There could be more than one function on <span class="math inline">\(n\)</span> bits that requires <span class="math inline">\(MH(n)\)</span> gates to compute. It is natural to ask for the uniform complexity of computing such a function.</p>
+<p>Unconditionally, <span class="math inline">\(\E^{\Sigma_2^P}\)</span> can produce maximally hard functions (<strong>todo:</strong> reference, link to proof?). We show that the uniform complexity of maximally hard functions drops down to <span class="math inline">\(\E^\NP\)</span>, an entire “level” of the exponential hierarchy, assuming <span class="math inline">\(\mcsp \in \P\)</span>. This consequence seems dramatic, even though it is unclear if the exponential hierarchy should be strict. We’ll now proceed by formalizing questions about circuit lower bounds into decision problems, to support the proof.</p>
+<p>To compute maximally hard functions, it would help to know <span class="math inline">\(MH(n)\)</span>. To find it, we’ll define a conveniently padded language that corresponds to determining the existence of <span class="math inline">\(s\)</span>-hardness at a particular input length.</p>
 <div class="definition" title="s-Hardness at length n">
-<p>The relation <span class="math inline">\(H(n,s)\)</span> is true if there <em>exists</em> a Boolean function on <span class="math inline">\(n\)</span> bits that requires <span class="math inline">\(s\)</span> gates to compute. We define the following padded decision problem corresponding to this relation. <span class="math display">\[H(n,s) = \{ \langle 1^{2^n}, 1^s \rangle : \exists f \in
-\mathcal{F}_n. \langle f,s \rangle \in MCSP \land \langle f, (s-1) \rangle
-\not\in MCSP \}\]</span></p>
+<p>The relation <span class="math inline">\(H(n,s)\)</span> is true if there <em>exists</em> a Boolean function on <span class="math inline">\(n\)</span> bits that requires <em>at least </em> <span class="math inline">\(s\)</span> gates to compute. The following padded decision problem codes this relation. <span class="math display">\[H(n,s) = \{ \langle
+1^{2^n}, 1^s \rangle : \exists f \in \mathcal{F}_n. \langle f, (s-1)
+\rangle \not\in MCSP \}\]</span></p>
 </div>
-<p>To actually find a particular hard function, we’ll define another conveniently padded language that asks if the input string can be extended to produce a truth table on <span class="math inline">\(n\)</span> bits that requires <span class="math inline">\(s\)</span> gates to compute.</p>
+<p>To actually find a particular hard function, we’ll define another conveniently padded language that asks if the input string can be extended to produce a truth table on <span class="math inline">\(n\)</span> bits that requires at least <span class="math inline">\(s\)</span> gates to compute.</p>
 <div class="definition" title="s-Hard Prefix at length n">
-<p>The relation <span class="math inline">\(HP(x,n,s)\)</span> is true if <span class="math inline">\(x\)</span> is the <em>prefix</em> of a Boolean function on <span class="math inline">\(n\)</span> bits (considered as a truth table) that requires <span class="math inline">\(s\)</span> gates to compute. We define the following padded decision problem corresponding to this relation. <span class="math display">\[HP(x,n,s) = \{ \langle x, 1^{2^n}, 1^s \rangle : \exists y \in
-\{0,1\}^{2^n - |x|}. \langle xy,s \rangle \in MCSP \\ \land \\ \langle xy, (s-1) \rangle
-\not\in MCSP \}\]</span></p>
+<p>The relation <span class="math inline">\(HP(x,n,s)\)</span> is true if <span class="math inline">\(x\)</span> is the <em>prefix</em> of a Boolean function on <span class="math inline">\(n\)</span> bits (considered as a truth table) that requires at least <span class="math inline">\(s\)</span> gates to compute. The padded decision problem below encodes this relation.</p>
+<p><span class="math display">\[HP(x,n,s) = \{ \langle x, 1^{2^n}, 1^s \rangle : \exists y \in
+\{0,1\}^{2^n - |x|}. \langle xy, (s-1) \rangle \not\in MCSP \}\]</span></p>
 </div>
 <div class="theorem" title="MCSP is Easy Implies Uniform Max-Complexity Functions">
 <p>If MCSP is in P, then <span class="math inline">\(E^{NP}\)</span> contains a family of Boolean functions of maximum circuit complexity.</p>
 </div>
 <div class="proof">
 <p>This proof uses two steps. First, figure out what the maximum possible circuit complexity on <span class="math inline">\(n\)</span> bits actually is. Second, use a standard “extend the solution” self-reduction to search for the lexicographically-first function of maximal circuit complexity on <span class="math inline">\(n\)</span> bits.</p>
-<p>It is not important to obtain the lex-first maximially hard function; it is just important to identify a <em>unique</em> such function to ensure that our machine decides a well-defined language. Any other way to ensure uniqueness would also work. On input <span class="math inline">\(x\)</span>, run the following algorithm:</p>
+<p>It is not important to obtain the lex-first maximally hard function; it is just important to identify a <em>unique</em> such function at each input length to ensure that our machine decides a well-defined language. Any other insurance of uniqueness would also work (eg, lex-last). On input <span class="math inline">\(x\)</span>, run the following algorithm:</p>
 <ol type="1">
 <li>For <span class="math inline">\(s\)</span> from <span class="math inline">\(2^n\)</span> to <span class="math inline">\(0\)</span>:
 <ol type="a">
-<li>if <span class="math inline">\(H(n,s)\)</span> then <span class="math inline">\(s^\star \gets s\)</span> and break</li>
+<li>if <span class="math inline">\(H(n,s)\)</span> then: <span class="math inline">\(s^\star \gets s\)</span> and break</li>
 </ol></li>
 <li>Let <span class="math inline">\(T\)</span> be an empty binary string</li>
 <li>Repeat until <span class="math inline">\(|T| = 2^n\)</span>:
 <ul>
-<li>if <span class="math inline">\(HP(T0,n,s^\star,)\)</span> then: <span class="math inline">\(T \gets T0\)</span></li>
+<li>if <span class="math inline">\(HP(T0, n, s^\star,)\)</span> then: <span class="math inline">\(T \gets T0\)</span></li>
 <li>Else, <span class="math inline">\(T \gets T1\)</span></li>
 </ul></li>
+<li>Print <span class="math inline">\(T[x]\)</span>, the value of <span class="math inline">\(f_T(x)\)</span></li>
 </ol>
-<p>The point is that, if MCSP is in P, HP and H are NP languages. This is because we need both MCSP and coMCSP to define these languages. If MCSP is in P, coMCSP is also in P because P is deterministic and thus closed under complement. So the inner relation of both these languages is in PTIME.</p>
-<p>Finally, the time required to produce the necessary padding is clearly in E.</p>
+<p>The point is that if <span class="math inline">\(\mcsp\)</span> is in <span class="math inline">\(\P\)</span> then HP and H are <span class="math inline">\(\NP\)</span> languages. This is because we need <span class="math inline">\(co\mcsp\)</span> to define these languages; hardness is about when circuits of size <span class="math inline">\(s\)</span> do <em>not</em> exist. If MCSP is in P, then coMCSP is also in <span class="math inline">\(\P\)</span> because <span class="math inline">\(\P\)</span> is deterministic and thus closed under complement. So the inner relation of both these languages can be computed in polynomial time. The existential quantifier over truth tables, given <span class="math inline">\(2^n\)</span> bits of padding, guesses a polynomial number of bits. So, both languages are in <span class="math inline">\(\NP\)</span>.</p>
+<p>Time required to produce the necessary padding to print H and HP instances is <span class="math inline">\(2^n\)</span>. So the above algorithm executes in <span class="math inline">\(\E^{\NP}\)</span> using the <span class="math inline">\(\NP\)</span> oracle to answer queries to H and HP. Since we start <span class="math inline">\(s\)</span> at <span class="math inline">\(2^n\)</span>, the algorithm will correctly identify the maximum hardness <span class="math inline">\(MH(|x|)\)</span>, discover the lex-first maximally hard function, and answer accordingly. This completes the proof.</p>
 </div>
 <h3 id="derandomization-into-zero-error">Derandomization into Zero-Error</h3>
-<h3 id="conclusions-discussion">Conclusions &amp; Discussion</h3>
+<p>The standard formalization of efficient randomized computation, <span class="math inline">\(\BPP\)</span>, allows randomized algorithms some small probability of error. The “zero error” formalization of efficient randomized computation, <span class="math inline">\(\ZPP\)</span>, is required to <em>always</em> output the correct answer or a special “don’t know” symbol (<span class="math inline">\(\bot\)</span>), and it may not output ‘<span class="math inline">\(\bot\)</span>’ more than half the time.</p>
+<p>Many open questions in complexity theory concern <em>derandomization,</em> attempts to transform randomized algorithms in deterministic algorithms, perhaps by allowing some additional time. The most ambitions derandomization asks “does <span class="math inline">\(\BPP = \P\)</span>?”. But, this is just one natural question. We could hope (somewhat more modestly) to remove all possibility of error from efficient randomized algorithms. One way to formalize this is to ask “does <span class="math inline">\(\BPP = \ZPP\)</span>?”. Under the assumption that <span class="math inline">\(\mcsp\)</span> is easy, we can efficiently remove all errors from any efficient randomized computation.</p>
+<div class="theorem" title="Hardness Tests Imply Derandomization into Zero-Error">
+<p>If <span class="math inline">\(\mcsp \in \P\)</span>, then <span class="math inline">\(\BPP \subseteq \ZPP\)</span></p>
+</div>
+<p>The proof combines hardness-to-randomness trade-offs from pseudorandomness with non-constructive circuit lower bounds and the ability of a <span class="math inline">\(\ZPP\)</span> algorithm to toss coins. Briefly, we generate a random truth table <span class="math inline">\(T\)</span>. With high probability, <span class="math inline">\(T\)</span> is the truth table of a hard function. Use the assumed <span class="math inline">\(\mcsp\)</span> algorithm to check if <span class="math inline">\(T\)</span> is a hard function. Since <span class="math inline">\(\mcsp \in \P\)</span>, this procedure is deterministic and error-free. If <span class="math inline">\(T\)</span> is not hard, print ‘<span class="math inline">\(\bot\)</span>’. If <span class="math inline">\(T\)</span> is hard, then use it to construct an efficient pseudorandom generator (PRG). With a PRG, we can transform any <span class="math inline">\(\BPP\)</span> algorithm into a fully deterministic algorithm, thus eliminating any possibility of error. The only source of error in the above sketch is thus the chance that we are <em>wildly</em> unlucky, and generate an easy <span class="math inline">\(T\)</span> at random.</p>
+<p>(<strong>todo:</strong> detailed proof of the above. actually define PRG and compute bounds on size of <span class="math inline">\(T\)</span> necessary to prove the result.)</p>
+<h3 id="conclusions-discussion-of-easy-mcsp">Conclusions &amp; Discussion of “Easy <span class="math inline">\(\mcsp\)</span>”</h3>
+<p>We sketched three results demonstrating the consequences of efficient, deterministic algorithms for <span class="math inline">\(\mcsp\)</span>. Though all these consequences seem dramatic, we can only use one of them as evidence that <span class="math inline">\(\mcsp \not\in \P\)</span>. Consider:</p>
+<ol type="1">
+<li>Though we only know how to produce maximally-hard functions in <span class="math inline">\(\E^{\Sigma_2\P}\)</span>, for all we know <span class="math inline">\(\E^{\Sigma_2\P} = \E^\NP\)</span>. It is not at all clear if we should believe the exponential time hierarchy is strict (<strong>todo:</strong> reference).</li>
+<li>We expect far more dramatic derandomization than <span class="math inline">\(\ZPP = \BPP\)</span>. In fact, reasonable circuit lower bounds imply that <span class="math inline">\(\BPP = \P\)</span>, via the same hardness-to-randomness tradeoffs used to derandomize <span class="math inline">\(\BPP\)</span> under our assumption that <span class="math inline">\(\mcsp\)</span> is easy.</li>
+</ol>
+<p>That being said, both the lower-bound and derandomization consequences we get from <span class="math inline">\(\mcsp \in \P\)</span> seem beyond current techniques. So these results at least show that exhibiting an efficient algorithm for <span class="math inline">\(\mcsp\)</span> should be quite difficult.</p>
+<p>On the other hand, if we believe in cryptography, we have to believe in local pseudorandom functions (<strong>todo:</strong> reference). If <span class="math inline">\(\mcsp \in \P\)</span>, such objects <em>cannot exist,</em> as demonstrated above. So the conclusion is: if we believe cryptographic assumptions, we <em>must</em> believe <span class="math inline">\(\mcsp \not\in \P\)</span>.</p>
 <h2 id="what-if-mcsp-is-np-complete">What if MCSP is NP-Complete?</h2>
 <h3 id="high-complexity-functions-in-e">High-Complexity Functions in E</h3>
 <h3 id="derandomization-into-subexp-time">Derandomization into Subexp-Time</h3>
-<h3 id="conclusions-discussion-1">Conclusions &amp; Discussion</h3>
+<h3 id="conclusions-discussion">Conclusions &amp; Discussion</h3>
 <h2 id="open-problems">Open Problems</h2>
 <h2 id="references" class="unnumbered">References</h2>
 <div id="refs" class="references">
+<div id="ref-DBLP:books/daglib/0023084">
+<p>Arora, S., &amp; Barak, B. (2009). <em>Computational complexity - A modern approach</em>. Cambridge University Press. Retrieved from <a href="http://www.cambridge.org/catalogue/catalogue.asp?isbn=9780521424264" class="uri">http://www.cambridge.org/catalogue/catalogue.asp?isbn=9780521424264</a></p>
+</div>
 <div id="ref-DBLP:conf/coco/CarmosinoIKK16">
 <p>Carmosino, M. L., Impagliazzo, R., Kabanets, V., &amp; Kolokolova, A. (2016). Learning algorithms from natural proofs. In R. Raz (Ed.), <em>31st conference on computational complexity, CCC 2016, may 29 to june 1, 2016, tokyo, japan</em> (Vol. 50, pp. 10:1–10:24). Schloss Dagstuhl - Leibniz-Zentrum fuer Informatik. <a href="https://doi.org/10.4230/LIPIcs.CCC.2016.10" class="uri">https://doi.org/10.4230/LIPIcs.CCC.2016.10</a></p>
 </div>
