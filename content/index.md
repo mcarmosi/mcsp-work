@@ -5,13 +5,15 @@ title: Home
 # MCSP Working Group
 \ 
 
-## Next Meeting
+## Meetings are Over
 
-**Thursday**, November 8, at **2:30PM,** in room 116: Igor Carboni
-Oliveira will present [Hardness magnification near state-of-the-art
-lower bounds][OPS18].
+The MCSP reading group is over, because the lower bounds workshop at
+Simons is over. Thank you to everyone who presented and participated
+in discussions.
 
-(weekly on Thursday at 2:30PM unless Lower Bounds has a workshop)
+I am working on lecture notes for each talk, which will be posted here
+in PDF and HTML format. Hopefully this site will make it easier to
+understand and get involved in MCSP research.
 
 ## Contributing
 

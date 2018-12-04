@@ -16,9 +16,9 @@ title: Reading List
    OR-AND-MOD Circuits][HOS18], presented by Shuichi Hirahara
 6. November 1: [Minimum Circuit Size, Graph Isomorphism, and Related Problems][AGvMMM18], presented by Andrew Morgan
 7. November 8: [Hardness magnification near state-of-the-art lower bounds][OPS18], presented by Igor Carboni Oliveira
-8. November 15: TBD
-9. November 29: TBD
-10. December 13: TBD
+8. November 15: Open Problems Session
+9. November 29: A Closed Problem, presented by Avishay Tal
+
    
 [ABKvMR06]: https://epubs.siam.org/doi/10.1137/050628994
 [OPS18]: https://eccc.weizmann.ac.il/report/2018/158/
