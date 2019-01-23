@@ -302,6 +302,31 @@ believe $\mcsp \not\in \P$.
 
 ## What if MCSP is NP-Complete?
 
+First, we define some reductions. Most NP-complete problems are
+NP-complete under even very weak reductions.
+
+:::: {.definition title="Many-one (Karp) Reduction"}
+
+Let $A$ and $B$ be two decision problems. A many-one reduction $f$
+from $A$ to $B$, denoted $A \leq_m B$, is some function $f: \{0,1\}^*
+\to \{0,1\}^*$ such that:
+
+$$
+\forall x x \in A \iff f(x) \in B
+$$
+
+::::
+
+By restricting the complexity of the map $f$, we produce efficient
+reductions. The most natural is a $\P$-many-one reduction, where the
+map is a function running in some fixed polynomial time.
+
+:::: {.definition title="Natural Reductions"}
+
+Let $A$ and $B$ be two problems. For any Karp (many-one) reduction
+from $A$ to $B$ $f$,
+
+::::
 
 ### High-Complexity Functions in E
 

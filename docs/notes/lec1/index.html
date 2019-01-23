@@ -137,6 +137,16 @@ when not? -->
 <p>That being said, both the lower-bound and derandomization consequences we get from <span class="math inline">\(\mcsp \in \P\)</span> seem beyond current techniques. So these results at least show that exhibiting an efficient algorithm for <span class="math inline">\(\mcsp\)</span> should be quite difficult.</p>
 <p>On the other hand, if we believe in cryptography, we have to believe in local pseudorandom functions (<strong>todo:</strong> reference). If <span class="math inline">\(\mcsp \in \P\)</span>, such objects <em>cannot exist,</em> as demonstrated above. So the conclusion is: if we believe cryptographic assumptions, we <em>must</em> believe <span class="math inline">\(\mcsp \not\in \P\)</span>.</p>
 <h2 id="what-if-mcsp-is-np-complete">What if MCSP is NP-Complete?</h2>
+<p>First, we require some notions of reduction.</p>
+<div class="definition" title="Many-one (Karp) Reduction">
+<p>Let <span class="math inline">\(A, B \subseteq \{0,1\}^{*}\)</span> be two decision problems. A many-one reduction <span class="math inline">\(f\)</span> from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span>, denoted <span class="math inline">\(A \leq_m B\)</span>, is some function <span class="math inline">\(f\)</span> such that:</p>
+<p><span class="math display">\[$
+\forall x f(x) \in A \iff x \in B
+\]</span>$</p>
+</div>
+<div class="definition" title="Natural Reductions">
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two problems. For any Karp (many-one) reduction from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> <span class="math inline">\(f\)</span>,</p>
+</div>
 <h3 id="high-complexity-functions-in-e">High-Complexity Functions in E</h3>
 <h3 id="derandomization-into-subexp-time">Derandomization into Subexp-Time</h3>
 <h3 id="conclusions-discussion">Conclusions &amp; Discussion</h3>
